@@ -9,6 +9,9 @@ download:
 	vcs pull src
 
 dependency:
+	sudo rm /etc/ros/rosdep/sources.list.d/20-default.list
+	sudo rosdep init
+	sudo apt update
 	rosdep update
 	rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 
