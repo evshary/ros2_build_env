@@ -28,3 +28,9 @@ export LIBGL_ALWAYS_SOFTWARE=1 # Necessary if GPU has some issues
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
 ```
+
+* Clean the project
+
+```shell
+just scripts/ros2-jazzy-rmw-zenoh/clean
+```

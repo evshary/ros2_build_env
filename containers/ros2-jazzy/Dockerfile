@@ -43,13 +43,16 @@ RUN apt update && \
       python3-pytest-timeout \
       ros-dev-tools
 
-# Cleanup unnecessary files
-RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 # Make user able to use sudo
-ARG USERNAME=ubuntu
-RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
+ARG USERNAME=ros2
+ARG UID=1005
+ARG GID=1005
+# Create the user
+RUN groupadd -g $GID $USERNAME && \
+    useradd -m -s /bin/bash -u $UID -g $USERNAME $USERNAME
+# Add sudo
+RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
+# Switch to the user
 USER $USERNAME
 
 # Set an entry point for the container

@@ -8,7 +8,7 @@ Download the ROS 2 jazzy source code and build
 
 ```shell
 # from project root directory
-just scripts/ros2-jazzy-src
+just scripts/ros2-jazzy-src/all
 ```
 
 * Clean the project

@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
-DOCKER_IMAGE=ros2-jazzy-gui
-DOCKER_FILE=containers/ros2-jazzy-gui/Dockerfile
+echo "test ${DOCKER_IMAGE}"
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
     echo "${DOCKER_IMAGE} does not exist. Creating..."
@@ -11,7 +11,6 @@ if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
                  -f ${DOCKER_FILE} -t ${DOCKER_IMAGE} .
 fi
 
-#rocker --network host --privileged --x11 --user --volume $(pwd):$HOME/workspace -- ${DOCKER_IMAGE}
 xhost +local:
 docker run --rm -it --network host  --privileged -v $(pwd):$HOME/workspace --workdir $HOME/workspace \
     -e QT_X11_NO_MITSHM=1 -e DISPLAY=$DISPLAY \
