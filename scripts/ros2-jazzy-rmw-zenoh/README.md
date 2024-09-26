@@ -4,12 +4,6 @@ Able to run GUI ROS 2 program in containers.
 
 ## Step
 
-* Run docker container
-
-```shell
-./containers/ros2-jazzy-gui/run_container.sh
-```
-
 * Build the code
 
 ```shell

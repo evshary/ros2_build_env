@@ -20,8 +20,10 @@ RUN apt-get update && \
 
 # Make user able to use sudo
 ARG USERNAME=ros2
-ARG UID=1005
-ARG GID=1005
+ARG UID=1000
+ARG GID=1000
+# Remove old ubuntu user
+RUN userdel ubuntu
 # Create the user
 RUN groupadd -g $GID $USERNAME && \
     useradd -m -s /bin/bash -u $UID -g $USERNAME $USERNAME
