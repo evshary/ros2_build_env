@@ -1,25 +1,17 @@
 # ros2_build_env
 
-This is the environment to trace ROS 2 Jazzy code in vscode.
+The project is to setup ROS 2 development environment for vscode.
 
 ## Usage
+
+### Using containers
 
 1. Download devcontainer plugins in vscode.
 
 2. Run vscode command: "Dev Containers: Rebuild and Reopen in containers"
 
-3. Download and build ROS 2 code
+   * Choose the container you want to use
 
-   ```shell
-   make
-   ```
+### Setup environment
 
-4. Clean all the code
-
-   ```shell
-   make clean
-   ```
-
-## Note
-
-* If you want to trace code, you can start from `src/ros2/examples/rclcpp`.
+* Follow the README inside the scripts folder.
