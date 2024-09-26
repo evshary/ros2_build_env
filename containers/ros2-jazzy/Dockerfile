@@ -23,7 +23,8 @@ RUN apt-get update && \
       wget \
       git \
       tmux \
-      vim
+      vim \
+      just
 
 # Install ROS necessary packages
 RUN apt update && \
