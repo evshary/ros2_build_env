@@ -6,7 +6,7 @@
                 "limitSymbolsToIncludedHeaders": false
             },
             "includePath": [],
-            "compileCommands": "./build/compile_commands.json",
+            "compileCommands": "./ros2_jazzy_src_ws/build/compile_commands.json",
             "name": "ROS",
             "intelliSenseMode": "gcc-x64",
             "compilerPath": "/usr/bin/gcc",
