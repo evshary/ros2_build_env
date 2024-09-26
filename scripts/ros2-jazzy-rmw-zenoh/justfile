@@ -2,18 +2,18 @@ all: download dependency build
 
 [no-cd]
 download:
-	mkdir -p src
-	cd src && git clone https://github.com/ZettaScaleLabs/rmw_zenoh.git -b dev/1.0.0
+	mkdir -p ros2_jazzy_rmw_zenoh_ws/src
+	cd ros2_jazzy_rmw_zenoh_ws/src && git clone https://github.com/ZettaScaleLabs/rmw_zenoh.git -b dev/1.0.0
 
 [no-cd]
 dependency:
 	rosdep update
-	rosdep install --from-paths src --ignore-src --rosdistro jazzy -y
+	cd ros2_jazzy_rmw_zenoh_ws && rosdep install --from-paths src --ignore-src --rosdistro jazzy -y
 
 [no-cd]
 build:
-	colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	cd ros2_jazzy_rmw_zenoh_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 [no-cd]
 clean:
-	rm -rf build install log
+	rm -rf ros2_jazzy_rmw_zenoh_ws

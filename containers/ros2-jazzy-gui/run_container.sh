@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOCKER_IMAGE=jazzy-gui
-DOCKER_FILE=jazzy_gui/Dockerfile
+DOCKER_FILE=containers/ros2-jazzy-gui/Dockerfile
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
     echo "${DOCKER_IMAGE} does not exist. Creating..."
