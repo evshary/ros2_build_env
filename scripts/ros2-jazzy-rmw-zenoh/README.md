@@ -14,8 +14,10 @@ just scripts/ros2-jazzy-rmw-zenoh/all
 
 ```shell
 # terminal 1
+source ros2_jazzy_rmw_zenoh_ws/install/setup.bash
 ros2 run rmw_zenoh_cpp rmw_zenohd
 # terminal 2
+source ros2_jazzy_rmw_zenoh_ws/install/setup.bash
 export TURTLEBOT3_MODEL=waffle
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/jazzy/share/turtlebot3_gazebo/models
 export LIBGL_ALWAYS_SOFTWARE=1 # Necessary if GPU has some issues
