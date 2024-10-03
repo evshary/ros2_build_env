@@ -7,7 +7,11 @@ Able to run GUI ROS 2 program in containers.
 * Build the code
 
 ```shell
+source /opt/ros/jazzy/setup.bash
+# Download the code and dependencies. Then build
 just scripts/ros2-jazzy-rmw-zenoh/all
+# Only build
+just scripts/ros2-jazzy-rmw-zenoh/build
 ```
 
 * Test navigation2
