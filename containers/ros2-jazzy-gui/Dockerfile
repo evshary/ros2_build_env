@@ -5,7 +5,8 @@ RUN apt-get update && \
     apt-get install -y \
       ros-jazzy-navigation2 \
       ros-jazzy-nav2-bringup \
-      ros-jazzy-turtlebot3*
+      ros-jazzy-turtlebot3* \
+      ros-jazzy-rmw-cyclonedds-cpp
 
 # Install other packages
 RUN apt-get update && \
