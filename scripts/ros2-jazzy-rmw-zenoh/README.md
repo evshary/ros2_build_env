@@ -26,11 +26,14 @@ just scripts/ros2-jazzy-rmw-zenoh/dependency
 source ros2_jazzy_rmw_zenoh_ws/install/setup.bash
 ros2 run rmw_zenoh_cpp rmw_zenohd
 # terminal 2
+## Necessary if GPU has some issues
+export LIBGL_ALWAYS_SOFTWARE=1
+## Use rmw_zenoh
 source ros2_jazzy_rmw_zenoh_ws/install/setup.bash
+export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+## Run navigation2
 export TURTLEBOT3_MODEL=waffle
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/jazzy/share/turtlebot3_gazebo/models
-export LIBGL_ALWAYS_SOFTWARE=1 # Necessary if GPU has some issues
-export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
 ```
 
