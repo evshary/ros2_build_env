@@ -1,0 +1,23 @@
+export aw_version := "2024.09"
+export folder_name := "autoware_humble_202409_ws"
+
+all: download dependency build
+
+[no-cd]
+download:
+	git clone https://github.com/autowarefoundation/autoware.git -b $aw_version
+	mv autoware $folder_name
+	cd $folder_name && mkdir src && vcs import src < autoware.repos
+
+[no-cd]
+dependency:
+	rosdep update
+	cd $folder_name && rosdep install --from-paths src --ignore-src -y
+
+[no-cd]
+build:
+	cd $folder_name && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+[no-cd]
+clean:
+	rm -rf $folder_name

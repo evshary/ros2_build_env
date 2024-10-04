@@ -16,6 +16,7 @@ just scripts/ros2-jazzy-rmw-zenoh/build
 
 # Option 2: Install dependency at the first time running docker
 # if you've already built it before and want to run it directly.
+just scripts/ros2-jazzy-rmw-zenoh/dependency
 ```
 
 * Update `.vscode/c_cpp_properties.json`
