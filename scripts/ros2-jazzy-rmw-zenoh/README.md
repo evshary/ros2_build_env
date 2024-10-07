@@ -22,6 +22,9 @@ just scripts/ros2-jazzy-rmw-zenoh/dependency
 * Test navigation2
 
 ```shell
+# prerequisites (https://docs.nav2.org/getting_started/index.html)
+sudo apt install ros-jazzy-navigation2
+sudo apt install ros-jazzy-nav2-bringup
 # terminal 1
 source ros2_jazzy_rmw_zenoh_ws/install/setup.bash
 ros2 run rmw_zenoh_cpp rmw_zenohd
@@ -35,6 +38,12 @@ export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 export TURTLEBOT3_MODEL=waffle
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/jazzy/share/turtlebot3_gazebo/models
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+## Run rviz2 and gazebo separately
+ros2 launch nav2_bringup rviz_launch.py
+ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False use_rviz:=False
+## You might need this if using WAYLAND
+## https://gazebosim.org/docs/harmonic/troubleshooting/#wayland-issues
+QT_QPA_PLATFORM=xcb ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
 ```
 
 * Clean the project
