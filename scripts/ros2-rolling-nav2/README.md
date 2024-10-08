@@ -1,4 +1,4 @@
-# ROS 2 Jazzy navigation2
+# ROS 2 Rolling navigation2
 
 Download navigation2 source code and build.
 
@@ -7,21 +7,21 @@ Download navigation2 source code and build.
 * Download and build
 
 ```shell
-source /opt/ros/jazzy/setup.bash
+source /opt/ros/rolling/setup.bash
 # Download the code and dependencies. Then build it.
-just scripts/ros2-jazzy-nav2/all
+just scripts/ros2-rolling-nav2/all
 
 # Option 1: Only build after modifying the code
-just scripts/ros2-jazzy-nav2/build
+just scripts/ros2-rolling-nav2/build
 
 # Option 2: Install dependency at the first time running docker
 # if you've already built it before and want to run it directly.
-just scripts/ros2-jazzy-nav2/dependency
+just scripts/ros2-rolling-nav2/dependency
 ```
 
 * Update `.vscode/c_cpp_properties.json`
 
-  * `"compileCommands": "./ros2_jazzy_nav2_ws/build/compile_commands.json",`
+  * `"compileCommands": "./ros2_rolling_nav2_ws/build/compile_commands.json",`
 
 * If you want to debug the ROS node, add `prefix=['xterm -e gdb -ex run --args'],` to the launch file.
 
@@ -30,5 +30,5 @@ just scripts/ros2-jazzy-nav2/dependency
 * Clean the project
 
 ```shell
-just scripts/ros2-jazzy-nav2/clean
+just scripts/ros2-rolling-nav2/clean
 ```
