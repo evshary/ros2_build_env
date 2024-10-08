@@ -23,6 +23,10 @@ just scripts/ros2-jazzy-nav2/dependency
 
   * `"compileCommands": "./ros2_jazzy_nav2_ws/build/compile_commands.json",`
 
+* If you want to debug the ROS node, add `prefix=['xterm -e gdb -ex run --args'],` to the launch file.
+
+  * Refer to [nav2 debug tutorial](https://docs.nav2.org/tutorials/docs/get_backtrace.html#from-nav2-bringup) and [Using GDB with ROS2, a reference](https://juraph.com/miscellaneous/ros2_and_gdb/)
+
 * Clean the project
 
 ```shell
