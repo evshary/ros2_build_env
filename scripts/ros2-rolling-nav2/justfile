@@ -19,5 +19,9 @@ build:
 	cd ros2_rolling_nav2_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 [no-cd]
+test:
+	cd ros2_rolling_nav2_ws && colcon test
+
+[no-cd]
 clean:
 	rm -rf ros2_rolling_nav2_ws
