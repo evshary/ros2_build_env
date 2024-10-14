@@ -1,11 +1,6 @@
 FROM osrf/ros:rolling-desktop
 
-# Install necessary packages
-RUN apt-get update && \
-    apt-get install -y \
-      ros-rolling-rmw-cyclonedds-cpp
-
-# Install other packages
+# Install basic packages
 RUN apt-get update && \
     apt-get install -y \
       sudo \
@@ -15,6 +10,14 @@ RUN apt-get update && \
       tmux \
       vim \
       just
+
+# Install ROS2 packages
+RUN apt-get update && \
+    apt-get install -y \
+      ros-rolling-rmw-cyclonedds-cpp \
+      ros-rolling-ros-gz-bridge \
+      ros-rolling-ros-gz-sim \
+      libceres-dev
 
 # Make user able to use sudo
 ARG USERNAME=ros2

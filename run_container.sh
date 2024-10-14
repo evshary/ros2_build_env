@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-echo "test ${DOCKER_IMAGE}"
+CONTAINER_NAME=${DOCKER_IMAGE}-container
+
+echo "Running ${DOCKER_IMAGE}"
 
 if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
     echo "${DOCKER_IMAGE} does not exist. Creating..."
@@ -17,8 +19,16 @@ if [[ -z "${DISPLAY}" ]]; then
 else
     xhost +local:
 fi
-docker run --rm -it --network host --privileged -v $(pwd):$HOME/workspace --workdir $HOME/workspace \
-    -e QT_X11_NO_MITSHM=1 -e DISPLAY=$DISPLAY \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v /etc/localtime:/etc/localtime:ro \
-    ${DOCKER_IMAGE}
+
+if [ ! "$(docker ps -a -q -f name=${CONTAINER_NAME})" ]; then
+    echo "Running ${CONTAINER_NAME}"
+    docker run --rm -it --network host --privileged -v $(pwd):${HOME}/workspace --workdir ${HOME}/workspace \
+        --name ${CONTAINER_NAME} \
+        -e QT_X11_NO_MITSHM=1 -e DISPLAY=${DISPLAY} \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -v /etc/localtime:/etc/localtime:ro \
+        ${DOCKER_IMAGE}
+else
+    echo "Enter the existing container ${CONTAINER_NAME}"
+    docker exec -it ${CONTAINER_NAME} bash
+fi
