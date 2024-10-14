@@ -37,14 +37,32 @@ export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 just scripts/ros2-rolling-nav2/test
 ```
 
-* Run navigation2
+* Clean the project
 
 ```shell
-# Remember to install dependencies
+just scripts/ros2-rolling-nav2/clean
+```
+
+## Run navigation2
+
+* Install dependencies
+
+```shell
+just scripts/ros2-rolling-rmw-zenoh/dependency
 just scripts/ros2-rolling-nav2/dependency
+```
+
+* Run zenohd in terminal 1
+
+```shell
 # terminal 1
 source ros2_rolling_rmw_zenoh_ws/install/setup.bash
 ros2 run rmw_zenoh_cpp rmw_zenohd
+```
+
+* Run nav2 & rviz2
+
+```shell
 # terminal 2
 ## Necessary if GPU has some issues
 export LIBGL_ALWAYS_SOFTWARE=1
@@ -55,16 +73,12 @@ export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 ## Run navigation2
 export TURTLEBOT3_MODEL=waffle
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+ros2 launch nav2_bringup tb4_simulation_launch.py headless:=False
 ## Run rviz2 and gazebo separately
-ros2 launch nav2_bringup rviz_launch.py
-ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False use_rviz:=False
+ros2 launch nav2_bringup rviz_launch.py &> rviz2.log
+ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False use_rviz:=False &> nav2_tb3.log
+ros2 launch nav2_bringup tb4_simulation_launch.py headless:=False use_rviz:=False &> nav2_tb4.log
 ## You might need this if using WAYLAND
 ## https://gazebosim.org/docs/harmonic/troubleshooting/#wayland-issues
 QT_QPA_PLATFORM=xcb ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
-```
-
-* Clean the project
-
-```shell
-just scripts/ros2-rolling-nav2/clean
 ```
