@@ -1,0 +1,25 @@
+all: download dependency build
+
+[no-cd]
+download:
+	mkdir -p ros2_rolling_src_ws/src
+	cd ros2_rolling_src_ws && \
+		wget https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos && \
+		vcs import src < ros2.repos && \
+		vcs pull src
+
+[no-cd]
+dependency:
+	sudo rm -rf /etc/ros/rosdep/sources.list.d/20-default.list
+	sudo rosdep init
+	sudo apt update
+	rosdep update
+	cd ros2_rolling_src_ws && rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
+
+[no-cd]
+build:
+	cd ros2_rolling_src_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+[no-cd]
+clean:
+	rm -rf ros2_rolling_src_ws
