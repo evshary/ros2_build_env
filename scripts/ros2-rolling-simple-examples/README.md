@@ -20,18 +20,7 @@ just scripts/ros2-rolling-simple-examples/dependency
 ```
 
 * Test examples
-
-```shell
-# Service
-## C++ server
-ros2 run cpp_service_client example_server
-## C++ client
-ros2 run cpp_service_client example_client
-## Python server
-ros2 run py_service_client add_two_ints_server
-## Python client
-ros2 run py_service_client add_two_ints_client
-```
+  * See the [README](https://github.com/evshary/ros2-simple-examples)
 
 * Clean the project
 
