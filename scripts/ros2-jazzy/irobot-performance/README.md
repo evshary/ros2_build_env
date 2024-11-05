@@ -7,16 +7,16 @@ Get the iRobot performance test tool.
 * Build the code
 
 ```shell
-source /opt/ros/rolling/setup.bash
+source /opt/ros/jazzy/setup.bash
 # Download the code and dependencies. Then build it.
-just scripts/ros2-rolling-irobot-performance/all
+just scripts/ros2-jazzy/irobot-performance/all
 
 # Option 1: Only build after modifying the code
-just scripts/ros2-rolling-irobot-performance/build
+just scripts/ros2-jazzy/irobot-performance/build
 
 # Option 2: Install dependency at the first time running docker
 # if you've already built it before and want to run it directly.
-just scripts/ros2-rolling-irobot-performance/dependency
+just scripts/ros2-jazzy/irobot-performance/dependency
 ```
 
 * Usage
@@ -25,5 +25,5 @@ just scripts/ros2-rolling-irobot-performance/dependency
 * Clean the project
 
 ```shell
-just scripts/ros2-rolling-irobot-performance/clean
+just scripts/ros2-jazzy/irobot-performance/clean
 ```
