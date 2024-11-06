@@ -7,13 +7,13 @@ Download the ROS 2 jazzy source code and build
 * Download and build
 
 ```shell
-just scripts/ros2-jazzy-src/all
+just scripts/ros2-jazzy/ros/all
 ```
 
 * Clean the project
 
 ```shell
-just scripts/ros2-jazzy-src/clean
+just scripts/ros2-jazzy/ros/clean
 ```
 
 ## Note
