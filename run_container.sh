@@ -22,8 +22,8 @@ fi
 
 if [ ! "$(docker ps -a -q -f name=${CONTAINER_NAME})" ]; then
     echo "Running ${CONTAINER_NAME}"
-    docker run --rm -it --network host --privileged -v $(pwd):${HOME}/workspace --workdir ${HOME}/workspace \
-        --name ${CONTAINER_NAME} \
+    docker run --rm -it --network host --privileged --name ${CONTAINER_NAME} \
+        -v $(pwd):/workspaces/ros2_build_env --workdir /workspaces/ros2_build_env \
         -e QT_X11_NO_MITSHM=1 -e DISPLAY=${DISPLAY} \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
         -v /etc/localtime:/etc/localtime:ro \
