@@ -9,14 +9,14 @@ This is the examples for testing
 ```shell
 source /opt/ros/rolling/setup.bash
 # Download the code and dependencies. Then build it.
-just scripts/ros2-rolling-simple-examples/all
+just scripts/ros2-rolling/simple-examples/all
 
 # Option 1: Only build after modifying the code
-just scripts/ros2-rolling-simple-examples/build
+just scripts/ros2-rolling/simple-examples/build
 
 # Option 2: Install dependency at the first time running docker
 # if you've already built it before and want to run it directly.
-just scripts/ros2-rolling-simple-examples/dependency
+just scripts/ros2-rolling/simple-examples/dependency
 ```
 
 * Test examples
@@ -25,5 +25,5 @@ just scripts/ros2-rolling-simple-examples/dependency
 * Clean the project
 
 ```shell
-just scripts/ros2-rolling-simple-examples/clean
+just scripts/ros2-rolling/simple-examples/clean
 ```

@@ -9,14 +9,14 @@ Able to build rmw_zenoh inside rolling
 ```shell
 source /opt/ros/rolling/setup.bash
 # Download the code and dependencies. Then build it.
-just scripts/ros2-rolling-rmw-zenoh/all
+just scripts/ros2-rolling/rmw-zenoh/all
 
 # Option 1: Only build after modifying the code
-just scripts/ros2-rolling-rmw-zenoh/build
+just scripts/ros2-rolling/rmw-zenoh/build
 
 # Option 2: Install dependency at the first time running docker
 # if you've already built it before and want to run it directly.
-just scripts/ros2-rolling-rmw-zenoh/dependency
+just scripts/ros2-rolling/rmw-zenoh/dependency
 ```
 
 * Test navigation2
@@ -48,5 +48,5 @@ QT_QPA_PLATFORM=xcb ros2 launch nav2_bringup tb3_simulation_launch.py headless:=
 * Clean the project
 
 ```shell
-just scripts/ros2-rolling-rmw-zenoh/clean
+just scripts/ros2-rolling/rmw-zenoh/clean
 ```

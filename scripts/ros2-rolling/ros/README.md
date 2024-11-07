@@ -7,13 +7,13 @@ Download the ROS 2 rolling source code and build
 * Download and build
 
 ```shell
-just scripts/ros2-rolling-src/all
+just scripts/ros2-rolling/ros/all
 ```
 
 * Clean the project
 
 ```shell
-just scripts/ros2-rolling-src/clean
+just scripts/ros2-rolling/ros/clean
 ```
 
 ## Note
