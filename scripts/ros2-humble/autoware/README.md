@@ -9,7 +9,7 @@ Able to trace the code in Autoware Humble.
 ```shell
 source /opt/ros/humble/setup.bash
 # Download the code and dependencies. Then build it.
-just scripts/autoware-humble/all
+just scripts/ros2-humble/autoware/all
 ```
 
 * Update `.vscode/c_cpp_properties.json`
@@ -19,5 +19,5 @@ just scripts/autoware-humble/all
 * Clean the project
 
 ```shell
-just scripts/autoware-humble/clean
+just scripts/ros2-humble/autoware/clean
 ```
