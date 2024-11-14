@@ -20,7 +20,11 @@ just scripts/ros2-rolling/simple-examples/dependency
 ```
 
 * Test examples
-  * See the [README](https://github.com/evshary/ros2-simple-examples)
+
+```shell
+source ros2_rolling_simple_examples_ws/install/local_setup.bash
+# See the https://github.com/evshary/ros2-simple-examples
+```
 
 * Clean the project
 
