@@ -8,8 +8,6 @@ RUN apt-get update && \
       clang \
       cmake \
       python3 \
-      ros-rolling-rmw-cyclonedds-cpp \
-      ros-rolling-ament-cmake-vendor-package \
       python3-colcon-common-extensions \
       python3-setuptools \
       python3-colcon-mixin \
@@ -27,8 +25,14 @@ RUN apt-get update && \
       just
 
 # Install ROS necessary packages
-RUN apt update && \
-    apt install -y \
+RUN apt-get update && \
+    apt-get install -y \
+      ros-rolling-rmw-cyclonedds-cpp \
+      ros-rolling-ament-cmake-vendor-package
+
+# Install ROS build system necessary packages
+RUN apt-get update && \
+    apt-get install -y \
       python3-flake8-blind-except \
       python3-flake8-class-newline \
       python3-flake8-deprecated \
@@ -42,6 +46,11 @@ RUN apt update && \
       python3-pytest-runner \
       python3-pytest-timeout \
       ros-dev-tools
+
+# Enable bash complete
+RUN rm /etc/apt/apt.conf.d/docker-clean
+RUN apt-get update && \
+    apt-get install -y bash-completion
 
 # Make user able to use sudo
 ARG USERNAME=ros2

@@ -3,14 +3,6 @@ FROM osrf/ros:jazzy-desktop
 # Install necessary packages
 RUN apt-get update && \
     apt-get install -y \
-      ros-jazzy-navigation2 \
-      ros-jazzy-nav2-bringup \
-      ros-jazzy-turtlebot3* \
-      ros-jazzy-rmw-cyclonedds-cpp
-
-# Install other packages
-RUN apt-get update && \
-    apt-get install -y \
       sudo \
       curl \
       wget \
@@ -18,6 +10,19 @@ RUN apt-get update && \
       tmux \
       vim \
       just
+
+# Install ROS necessary packages
+RUN apt-get update && \
+    apt-get install -y \
+      ros-jazzy-navigation2 \
+      ros-jazzy-nav2-bringup \
+      ros-jazzy-turtlebot3* \
+      ros-jazzy-rmw-cyclonedds-cpp
+
+# Enable bash complete
+RUN rm /etc/apt/apt.conf.d/docker-clean
+RUN apt-get update && \
+    apt-get install -y bash-completion
 
 # Make user able to use sudo
 ARG USERNAME=ros2

@@ -1,6 +1,6 @@
 FROM osrf/ros:rolling-desktop
 
-# Install basic packages
+# Install necessary packages
 RUN apt-get update && \
     apt-get install -y \
       sudo \
@@ -11,13 +11,18 @@ RUN apt-get update && \
       vim \
       just
 
-# Install ROS2 packages
+# Install ROS necessary packages
 RUN apt-get update && \
     apt-get install -y \
       ros-rolling-rmw-cyclonedds-cpp \
       ros-rolling-ros-gz-bridge \
       ros-rolling-ros-gz-sim \
       libceres-dev
+
+# Enable bash complete
+RUN rm /etc/apt/apt.conf.d/docker-clean
+RUN apt-get update && \
+    apt-get install -y bash-completion
 
 # Make user able to use sudo
 ARG USERNAME=ros2
