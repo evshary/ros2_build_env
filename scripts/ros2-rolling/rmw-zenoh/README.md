@@ -20,26 +20,28 @@ just scripts/ros2-rolling/rmw-zenoh/dependency
 ```
 
 * Test navigation2
+  * Use `export LIBGL_ALWAYS_SOFTWARE=1` if GPU has some issues.
+  * Disable "Large Text" in Ubuntu to solve fliker issue
 
 ```shell
 # prerequisites: need to build nav2 first
 source ros2_rolling_nav2_ws/install/local_setup.bash
-# terminal 1
 source ros2_rolling_rmw_zenoh_ws/install/local_setup.bash
-ros2 run rmw_zenoh_cpp rmw_zenohd
-# terminal 2
-## Necessary if GPU has some issues
-export LIBGL_ALWAYS_SOFTWARE=1
-## Use rmw_zenoh
-source ros2_rolling_rmw_zenoh_ws/install/local_setup.bash
+# Use rmw_zenoh
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
-## Run navigation2
-export TURTLEBOT3_MODEL=waffle
-export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/rolling/share/turtlebot3_gazebo/models
+```
+
+```shell
+# terminal 1
+ros2 run rmw_zenoh_cpp rmw_zenohd
+
+# terminal 2
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+
 ## Run rviz2 and gazebo separately
 ros2 launch nav2_bringup rviz_launch.py
 ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False use_rviz:=False
+
 ## You might need this if using WAYLAND
 ## https://gazebosim.org/docs/harmonic/troubleshooting/#wayland-issues
 QT_QPA_PLATFORM=xcb ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
