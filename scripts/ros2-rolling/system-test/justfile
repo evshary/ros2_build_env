@@ -1,0 +1,29 @@
+all: download dependency build
+
+[no-cd]
+download:
+	mkdir -p ros2_rolling_system_test_ws/src
+	cd ros2_rolling_system_test_ws/src && \
+		git clone https://github.com/ros2/system_tests.git -b rolling && \
+		git clone https://github.com/ros2/rcl.git -b rolling && \
+		git clone https://github.com/ros2/rclcpp.git -b rolling && \
+		git clone https://github.com/ros2/rclpy.git -b rolling && \
+		git clone https://github.com/ros2/rclc.git -b rolling
+
+[no-cd]
+dependency:
+	rosdep update
+	cd ros2_rolling_system_test_ws && rosdep install --from-paths src --ignore-src -y
+
+[no-cd]
+build:
+	cd ros2_rolling_system_test_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DSKIP_MULTI_RMW_TESTS=On
+
+[no-cd]
+test:
+	cd ros2_rolling_system_test_ws && colcon test
+	python3 common/collect_test_result.py ros2_rolling_system_test_ws
+
+[no-cd]
+clean:
+	rm -rf ros2_rolling_system_test_ws
