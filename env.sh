@@ -1,5 +1,10 @@
+if [ $# -eq 0 ]; then
+  echo "You need to provide ROS version, like jazzy, rolling..."
+  return
+fi
+
 shell=`echo $SHELL | awk -F '/' '{print $NF}'`
-rosdistro=${1:-jazzy}
+rosdistro=${1}
 
 source /opt/ros/${rosdistro}/setup.${shell}
 for folder in ros2_${rosdistro}_*_ws; do
