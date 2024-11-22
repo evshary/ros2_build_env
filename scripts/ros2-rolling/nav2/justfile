@@ -21,6 +21,7 @@ build:
 [no-cd]
 test:
 	cd ros2_rolling_nav2_ws && colcon test
+	python3 common/collect_test_result.py ros2_rolling_nav2_ws
 
 [no-cd]
 clean:
