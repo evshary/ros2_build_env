@@ -67,7 +67,7 @@ base_directory = sys.argv[1] + "/log/latest_test/"
 collected_results = collect_test_results(base_directory)
 
 # Save results to a summary file or print them
-summary_file = "log_" + sys.argv[1] + ".txt"
+summary_file = "log_" + sys.argv[1] + ".log"
 with open(summary_file, "w") as output_file:
     for file_path, content in collected_results.items():
         output_file.write(f"Results from: {file_path}\n\n")
