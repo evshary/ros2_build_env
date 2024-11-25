@@ -28,6 +28,16 @@ just scripts/ros2-jazzy/nav2/dependency
   * Add `prefix=['xterm -e gdb -ex run --args'],` to the launch file.
     * Refer to [nav2 debug tutorial](https://docs.nav2.org/tutorials/docs/get_backtrace.html#from-nav2-bringup) and [Using GDB with ROS2, a reference](https://juraph.com/miscellaneous/ros2_and_gdb/)
 
+* Test the code
+
+```shell
+# terminal 1
+ros2 run rmw_zenoh_cpp rmw_zenohd
+# terminal 2
+export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+just scripts/ros2-jazzy/nav2/test
+```
+
 * Clean the project
 
 ```shell

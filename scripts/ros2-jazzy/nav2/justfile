@@ -19,5 +19,10 @@ build:
 	cd ros2_jazzy_nav2_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 [no-cd]
+test:
+	cd ros2_jazzy_nav2_ws && colcon test
+	python3 common/collect_test_result.py ros2_jazzy_nav2_ws
+
+[no-cd]
 clean:
 	rm -rf ros2_jazzy_nav2_ws
