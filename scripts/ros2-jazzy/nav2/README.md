@@ -33,3 +33,42 @@ just scripts/ros2-jazzy/nav2/dependency
 ```shell
 just scripts/ros2-jazzy/nav2/clean
 ```
+
+## Run navigation2
+
+* Before tests
+  * Use `export LIBGL_ALWAYS_SOFTWARE=1` if GPU has some issues.
+  * Disable "Large Text" in Ubuntu to solve fliker issue
+  * Install dependencies if you run a clean container
+
+    ```shell
+    just scripts/ros2-jazzy/rmw-zenoh/dependency
+    just scripts/ros2-jazzy/nav2/dependency
+    ```
+
+* Run zenohd in terminal 1
+
+```shell
+# terminal 1
+./common/run_zenohd.sh
+```
+
+* Run nav2 & rviz2
+
+```shell
+# terminal 2
+## Run navigation2
+ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+### TB4
+ros2 launch nav2_bringup tb4_simulation_launch.py headless:=False
+
+## Run rviz2 and gazebo separately
+ros2 launch nav2_bringup rviz_launch.py &> rviz2.log
+ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False use_rviz:=False &> nav2_tb3.log
+### TB4
+ros2 launch nav2_bringup tb4_simulation_launch.py headless:=False use_rviz:=False &> nav2_tb4.log
+
+## You might need this if using WAYLAND
+## https://gazebosim.org/docs/harmonic/troubleshooting/#wayland-issues
+QT_QPA_PLATFORM=xcb ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+```
