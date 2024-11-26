@@ -10,6 +10,12 @@ Download the ROS 2 jazzy source code and build
 just scripts/ros2-jazzy/ros/all
 ```
 
+* Test
+
+```shell
+just scripts/ros2-jazzy/ros/test
+```
+
 * Clean the project
 
 ```shell
