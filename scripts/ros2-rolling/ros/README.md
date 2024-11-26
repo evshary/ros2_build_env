@@ -10,6 +10,12 @@ Download the ROS 2 rolling source code and build
 just scripts/ros2-rolling/ros/all
 ```
 
+* Test
+
+```shell
+just scripts/ros2-rolling/ros/test
+```
+
 * Clean the project
 
 ```shell
