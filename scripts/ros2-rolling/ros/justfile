@@ -4,7 +4,7 @@ all: download dependency build
 download:
 	mkdir -p ros2_rolling_src_ws/src
 	cd ros2_rolling_src_ws && \
-		wget https://raw.githubusercontent.com/Yadunund/ros2/8792a97457822a5f3dad6503bfb2b0712ef4b539/ros2.repos && \
+		wget https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos && \
 		vcs import src < ros2.repos && \
 		vcs pull src
 
