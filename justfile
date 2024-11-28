@@ -3,3 +3,4 @@ usage:
 
 clean:
     rm -rf *_ws
+    rm -rf *.log

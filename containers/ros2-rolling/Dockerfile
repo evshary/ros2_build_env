@@ -22,7 +22,8 @@ RUN apt-get update && \
       git \
       tmux \
       vim \
-      just
+      just \
+      valgrind
 
 # Install ROS necessary packages
 RUN apt-get update && \
