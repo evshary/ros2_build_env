@@ -46,8 +46,13 @@ export UBSAN_OPTIONS=halt_on_error=0:print_stacktrace=1:log_path=ubsan.log
 just scripts/ros2-rolling/simple-examples/debug_ubsan
 ros2 run simple_examples_cpp qos_pub
 
-# GDB
+# GDB in terminal
 # Refer to https://juraph.com/miscellaneous/ros2_and_gdb/
+
+# GDB in vscode
+# Need to run in container
+# Modify .vscode/launch.json
+# Press F5
 ```
 
 * Clean the project

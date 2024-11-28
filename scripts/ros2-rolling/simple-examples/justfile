@@ -20,6 +20,8 @@ debug:
 		colcon build --symlink-install \
 					 --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 								  -DCMAKE_BUILD_TYPE=Debug
+	echo "Create .env file to be used in debug mode"
+	bash -c "source /opt/ros/rolling/setup.bash; printenv | grep ros > .env"
 
 [no-cd]
 debug_ubsan:
