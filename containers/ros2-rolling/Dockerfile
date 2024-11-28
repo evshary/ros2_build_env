@@ -23,7 +23,8 @@ RUN apt-get update && \
       tmux \
       vim \
       just \
-      valgrind
+      valgrind \
+      gdb gdbserver
 
 # Install ROS necessary packages
 RUN apt-get update && \
