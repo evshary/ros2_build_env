@@ -31,10 +31,6 @@ just scripts/ros2-rolling/nav2/dependency
 * Test the code
 
 ```shell
-# terminal 1
-ros2 run rmw_zenoh_cpp rmw_zenohd
-# terminal 2
-export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 just scripts/ros2-rolling/nav2/test
 ```
 
@@ -66,19 +62,12 @@ just scripts/ros2-rolling/nav2/clean
 * Run nav2 & rviz2
 
 ```shell
-# terminal 2
-## Run navigation2
-ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
-### TB4
-ros2 launch nav2_bringup tb4_simulation_launch.py headless:=False
+# terminal 2: rviz
+./common/run_nav2_rviz.sh
 
-## Run rviz2 and gazebo separately
-ros2 launch nav2_bringup rviz_launch.py &> rviz2.log
-ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False use_rviz:=False &> nav2_tb3.log
-### TB4
-ros2 launch nav2_bringup tb4_simulation_launch.py headless:=False use_rviz:=False &> nav2_tb4.log
-
-## You might need this if using WAYLAND
-## https://gazebosim.org/docs/harmonic/troubleshooting/#wayland-issues
-QT_QPA_PLATFORM=xcb ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+# terminal 3: nav2
+## TB3
+./common/run_nav2_tb3.sh
+## TB4
+./common/run_nav2_tb4.sh
 ```
