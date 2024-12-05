@@ -1,0 +1,19 @@
+all: download dependency build
+
+[no-cd]
+download:
+	mkdir -p ros2_jazzy_r2r_examples_ws/src
+	cd ros2_jazzy_r2r_examples_ws/src && git clone https://github.com/evshary/r2r_examples.git
+
+[no-cd]
+dependency:
+	rosdep update
+	cd ros2_jazzy_r2r_examples_ws && rosdep install --from-paths src --ignore-src -y
+
+[no-cd]
+build:
+	cd ros2_jazzy_r2r_examples_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+[no-cd]
+clean:
+	rm -rf ros2_jazzy_r2r_examples_ws
