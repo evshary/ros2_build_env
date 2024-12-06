@@ -1,0 +1,13 @@
+{
+    // Able to run rust-analyzer for r2r
+    "rust-analyzer.linkedProjects": [
+        "ros2_jazzy_r2r_examples_ws/src/r2r_examples/r2r_simple_examples/Cargo.toml",
+    ],
+    // Necessary for r2r
+    "rust-analyzer.cargo.extraEnv": {
+        "ROS_DISTRO": "jazzy",
+        "ROS_VERSION": "2",
+        "LD_LIBRARY_PATH": "/opt/ros/jazzy/lib:$LD_LIBRARY_PATH",
+        "AMENT_PREFIX_PATH": "/opt/ros/jazzy",
+    },
+}
