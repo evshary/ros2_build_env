@@ -26,8 +26,13 @@
 				"ms-python.python"
 			]
 		}
-	}
+	},
 
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
+
+	// Change the workspaces name to ensure it is compatible to the one in `run_container.sh`
+	// Then we can reuse `compile_commands.json` built by `run_container.sh`
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/ros2_build_env,type=bind",
+	"workspaceFolder": "/workspaces/ros2_build_env"
 }
