@@ -11,12 +11,8 @@ source /opt/ros/jazzy/setup.bash
 # Download the code and dependencies. Then build it.
 just scripts/ros2-jazzy/irobot-performance/all
 
-# Option 1: Only build after modifying the code
+# Only build after modifying the code
 just scripts/ros2-jazzy/irobot-performance/build
-
-# Option 2: Install dependency at the first time running docker
-# if you've already built it before and want to run it directly.
-just scripts/ros2-jazzy/irobot-performance/dependency
 ```
 
 * Usage

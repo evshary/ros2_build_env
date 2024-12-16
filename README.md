@@ -21,15 +21,16 @@ source ./containers/<whatever you want>/env.sh
 ./run_container.sh
 ```
 
+Note that containers won't be deleted after your experiment.
+This keeps the packages you installed can be reused.
+
 ### Run the scenario
 
-Here are the supported scenarios:
+The scenario scripts is insides the script folder.
 
-* [ROS 2 Jazzy source code](scripts/ros2-jazzy-src/README.md)
-* [rmw_zenoh in ROS 2 Jazzy](scripts/ros2-jazzy-rmw-zenoh/README.md)
-* [Navigation2 in ROS 2 Jazzy](scripts/ros2-jazzy-nav2/README.md)
-* [Navigation2 in ROS 2 Rolling](scripts/ros2-rolling-nav2/README.md)
-* [Autoware Humble](scripts/autoware-humble/README.md)
+```shell
+just scripts/ros2-<version>/<scenario>/all
+```
 
 ## Note
 

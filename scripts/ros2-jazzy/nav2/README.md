@@ -11,12 +11,8 @@ source /opt/ros/jazzy/setup.bash
 # Download the code and dependencies. Then build it.
 just scripts/ros2-jazzy/nav2/all
 
-# Option 1: Only build after modifying the code
+# Only build after modifying the code
 just scripts/ros2-jazzy/nav2/build
-
-# Option 2: Install dependency at the first time running docker
-# if you've already built it before and want to run it directly.
-just scripts/ros2-jazzy/nav2/dependency
 ```
 
 * Update `.vscode/c_cpp_properties.json`
@@ -45,14 +41,8 @@ just scripts/ros2-jazzy/nav2/clean
 * Before tests
   * Use `export LIBGL_ALWAYS_SOFTWARE=1` if GPU has some issues.
   * Disable "Large Text" in Ubuntu to solve fliker issue
-  * Install dependencies if you run a clean container
 
-    ```shell
-    just scripts/ros2-jazzy/rmw-zenoh/dependency
-    just scripts/ros2-jazzy/nav2/dependency
-    ```
-
-* Run zenohd in terminal 1
+* Run zenohd
 
 ```shell
 # terminal 1
