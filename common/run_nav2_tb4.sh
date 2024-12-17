@@ -4,7 +4,7 @@ set -x
 source /opt/ros/"${ROS_DISTRO}"/setup.bash
 source ros2_"${ROS_DISTRO}"_nav2_ws/install/local_setup.bash
 
-ros2 launch nav2_bringup tb4_simulation_launch.py headless:=False use_rviz:=False
+ros2 launch nav2_bringup tb4_simulation_launch.py headless:=False use_rviz:=False 2>&1 | tee nav2_tb4.log
 
 ## You might need this if using WAYLAND
 ## https://gazebosim.org/docs/harmonic/troubleshooting/#wayland-issues
