@@ -1,0 +1,19 @@
+all folder url: (download folder url) (dependency folder) (build folder)
+
+[no-cd]
+download folder url:
+	mkdir -p ros2_rolling_{{folder}}_ws/src
+	cd ros2_rolling_{{folder}}_ws/src && git clone {{url}}
+
+[no-cd]
+dependency folder:
+	rosdep update
+	cd ros2_rolling_{{folder}}_ws && rosdep install --from-paths src --ignore-src -y
+
+[no-cd]
+build folder:
+	cd ros2_rolling_{{folder}}_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+[no-cd]
+clean folder:
+	rm -rf ros2_rolling_{{folder}}_ws
