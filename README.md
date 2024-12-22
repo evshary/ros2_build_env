@@ -36,4 +36,9 @@ just scripts/ros2-<version>/all <folder> <repo url>
 
 ## Note
 
-You can modify `compileCommands` inside the `c_cpp_properties.json` to make tracing code easier.
+* You can modify `compileCommands` inside the `c_cpp_properties.json` to make tracing code easier.
+* Install pre-commit to check Markdown.
+
+```shell
+pre-commit install --install-hooks
+```
