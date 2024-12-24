@@ -39,6 +39,10 @@ just scripts/ros2-<version>/all <folder> <repo url>
 * You can modify `compileCommands` inside the `c_cpp_properties.json` to make tracing code easier.
 * Install pre-commit to check Markdown.
 
-```shell
-pre-commit install --install-hooks
-```
+   ```shell
+   pre-commit install --install-hooks
+   ```
+
+* You need to build `ros2_tracing` from source code from the time being to support `rmw_zenoh`
+  * `just scripts/ros2-rolling/all ros2_tracing https://github.com/ros2/ros2_tracing.git`
+  * Refer to [here](https://github.com/ros2/rmw_zenoh/pull/294#issuecomment-2557971115)
