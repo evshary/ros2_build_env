@@ -42,7 +42,3 @@ just scripts/ros2-<version>/all <folder> <repo url>
    ```shell
    pre-commit install --install-hooks
    ```
-
-* You need to build `ros2_tracing` from source code from the time being to support `rmw_zenoh`
-  * `just scripts/ros2-rolling/all ros2_tracing https://github.com/ros2/ros2_tracing.git`
-  * Refer to [here](https://github.com/ros2/rmw_zenoh/pull/294#issuecomment-2557971115)
