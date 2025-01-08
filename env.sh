@@ -14,3 +14,9 @@ done
 
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 #export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+# Configuration for Zenoh
+#export ZENOH_SESSION_CONFIG_URI=xxxx
+#export ZENOH_ROUTER_CONFIG_URI=xxxx
+#export ZENOH_SHM_ENABLED=true
+#export ZENOH_SHM_MESSAGE_SIZE_THRESHOLD=1
