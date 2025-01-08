@@ -30,7 +30,9 @@ The scenario scripts is insides the script folder.
 
 ```shell
 just scripts/ros2-<version>/<scenario>/all
+
 # If there is no specific scenario scripts
+# For example: just scripts/ros2-rolling/all demos https://github.com/ros2/demos.git
 just scripts/ros2-<version>/all <folder> <repo url>
 ```
 
