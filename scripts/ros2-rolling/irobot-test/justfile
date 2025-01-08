@@ -1,0 +1,28 @@
+all: download dependency build
+
+[no-cd]
+download:
+	mkdir -p ros2_rolling_irobot_test_ws/src
+	cd ros2_rolling_irobot_test_ws/src && \
+		git clone https://github.com/irobot-ros/ros2-performance.git -b rolling
+	cd ros2_rolling_irobot_test_ws/src/ros2-performance && \
+	    git submodule update --init --recursive
+
+[no-cd]
+dependency:
+	rosdep update
+	cd ros2_rolling_irobot_test_ws && rosdep install --from-paths src --ignore-src -y
+
+[no-cd]
+build:
+	cd ros2_rolling_irobot_test_ws && colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+[no-cd]
+test:
+	./ros2_rolling_irobot_test_ws/install/irobot_benchmark/lib/irobot_benchmark/irobot_benchmark \
+		--topology ros2_rolling_irobot_test_ws/src/ros2-performance/irobot_benchmark/topology/mont_blanc.json \
+		--ipc off --time 120 --tracking on --csv-out on
+
+[no-cd]
+clean:
+	rm -rf ros2_rolling_irobot_test_ws
