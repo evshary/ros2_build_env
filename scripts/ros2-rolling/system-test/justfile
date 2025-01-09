@@ -9,6 +9,12 @@ download:
 		git clone https://github.com/ros2/rclcpp.git -b rolling && \
 		git clone https://github.com/ros2/rclpy.git -b rolling && \
 		git clone https://github.com/ros2/rclc.git -b rolling
+	## Switch to certain commit
+	#cd ros2_rolling_system_test_ws/src/system_tests && git checkout f09a98a46f84ee6e07ead2626fc2ed63bf429dd7
+	#cd ros2_rolling_system_test_ws/src/rcl && git checkout 673c558fa7ff5434a489857df75064ebdb0ee5a8
+	#cd ros2_rolling_system_test_ws/src/rclcpp && git checkout a0a2a067d84fd6a38ab4f71b691d51ca5aa97ba5
+	#cd ros2_rolling_system_test_ws/src/rclpy && git checkout ba72a017a9a1f8d2a92e615cafed318d99f7576f	
+	#cd ros2_rolling_system_test_ws/src/rclc && git checkout 6f0a9edb3cf30df0368d3abbad2fa66149e5cc65
 
 [no-cd]
 dependency:
