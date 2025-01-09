@@ -17,7 +17,7 @@ just scripts/ros2-rolling/irobot-performance/build
 
 * Tes
   * See the [README](https://github.com/irobot-ros/ros2-performance)
-  * Test the topology [mont_blanc](https://github.com/irobot-ros/ros2-performance/blob/rolling/irobot_benchmark/topology/mont_blanc.pdf)
+  * Test the [topology](https://github.com/irobot-ros/ros2-performance/blob/rolling/irobot_benchmark/topology/mont_blanc.pdf) and the [config](https://github.com/irobot-ros/ros2-performance/blob/rolling/irobot_benchmark/topology/mont_blanc.json) of mont_blanc
 
 ```shell
 just scripts/ros2-rolling/irobot-performance/test

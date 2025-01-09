@@ -3,7 +3,7 @@ rosdistro=rolling
 
 source /opt/ros/${rosdistro}/setup.${shell}
 source ros2_${rosdistro}_rmw_zenoh_ws/install/local_setup.${shell}
-source ros2_${rosdistro}_irobot_test_ws/install/local_setup.${shell}
+source ros2_${rosdistro}_irobot_performance_ws/install/local_setup.${shell}
 
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 
