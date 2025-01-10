@@ -11,7 +11,8 @@ RUN apt-get update && \
       vim \
       just \
       valgrind \
-      gdb gdbserver
+      gdb gdbserver \
+      ccache
 
 # Install ROS necessary packages
 RUN apt-get update && \
