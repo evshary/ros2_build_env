@@ -18,3 +18,7 @@ export CC="/usr/lib/ccache/gcc"
 export CXX="/usr/lib/ccache/g++"
 export CCACHE_DIR="$HOME/.cache/ccache/"
 ccache -s # Show the current cache
+
+if [[ "$PS1" != *"(${ENV_NAME})"* ]]; then
+  export PS1="(${ENV_NAME}) $PS1"
+fi
