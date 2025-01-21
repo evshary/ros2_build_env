@@ -1,5 +1,5 @@
 # Set the shell type
-shell=`echo $SHELL | awk -F '/' '{print $NF}'`
+shell=zsh
 
 # RMW_IMPLEMENTATION
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp

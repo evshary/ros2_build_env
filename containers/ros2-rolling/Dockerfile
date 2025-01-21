@@ -29,6 +29,7 @@ RUN apt-get update && \
 
 # Install ROS necessary packages
 RUN apt-get update && \
+    apt-get install -y --only-upgrade ros-rolling-* && \
     apt-get install -y \
       ros-rolling-rmw-cyclonedds-cpp \
       ros-rolling-ament-cmake-vendor-package
@@ -69,5 +70,16 @@ RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
 # Switch to the user
 USER $USERNAME
 
+# Use ZSH
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)" -- \
+    -t candy \
+    -p git \
+    -p git-flow \
+    -p https://github.com/zsh-users/zsh-autosuggestions \
+    -p https://github.com/zsh-users/zsh-completions
+
+ENV DOCKER_IMAGE=ros2-rolling
+RUN echo 'PS1="%{$fg_bold[red]%}(${DOCKER_IMAGE}) $PS1"' >> ~/.zshrc
+
 # Set an entry point for the container
-CMD ["/bin/bash"]
+CMD ["/bin/zsh"]
