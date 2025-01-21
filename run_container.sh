@@ -34,6 +34,7 @@ set -e
 if [ "$CONTAINER_STATUS" == "exited" ]; then
     echo "Container '$CONTAINER_NAME' is stopped. Starting the container..."
     docker start $CONTAINER_NAME
+    docker exec -it ${CONTAINER_NAME} bash
 elif [ "$CONTAINER_STATUS" == "running" ]; then
     echo "Container '$CONTAINER_NAME' is already running. Attaching to the container..."
     docker exec -it ${CONTAINER_NAME} bash
