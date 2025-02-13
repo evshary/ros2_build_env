@@ -82,4 +82,4 @@ ENV DOCKER_IMAGE=ros2-jazzy
 RUN echo 'PS1="%{$fg_bold[red]%}(${DOCKER_IMAGE}) $PS1"' >> ~/.zshrc
 
 # Set an entry point for the container
-CMD ["/bin/bash"]
+CMD ["/bin/zsh"]
