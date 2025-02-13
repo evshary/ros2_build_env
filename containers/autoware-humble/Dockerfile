@@ -1,4 +1,4 @@
-FROM ghcr.io/autowarefoundation/autoware:20240905-devel-cuda-amd64
+FROM ghcr.io/autowarefoundation/autoware:universe-devel-cuda-20250212
 
 # For just
 RUN wget -qO - 'https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub' | gpg --dearmor | sudo tee /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1> /dev/null
@@ -29,5 +29,16 @@ RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
 # Switch to the user
 USER $USERNAME
 
+# Use ZSH
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)" -- \
+    -t candy \
+    -p git \
+    -p git-flow \
+    -p https://github.com/zsh-users/zsh-autosuggestions \
+    -p https://github.com/zsh-users/zsh-completions
+
+ENV DOCKER_IMAGE=autoware-humble
+RUN echo 'PS1="%{$fg_bold[red]%}(${DOCKER_IMAGE}) $PS1"' >> ~/.zshrc
+
 # Set an entry point for the container
-CMD ["/bin/bash"]
+CMD ["/bin/zsh"]

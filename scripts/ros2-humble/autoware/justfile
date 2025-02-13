@@ -1,5 +1,5 @@
-export aw_version := "2024.09"
-export folder_name := "autoware_humble_202409_ws"
+export aw_version := "release/2025.02"
+export folder_name := "autoware_humble_202502_ws"
 
 all: download dependency build
 
