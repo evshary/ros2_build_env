@@ -1,4 +1,4 @@
-export aw_version := "release/2025.02"
+export aw_version := "main"
 export folder_name := "autoware_humble_202502_ws"
 
 all: download dependency build
@@ -8,6 +8,7 @@ download:
 	git clone https://github.com/autowarefoundation/autoware.git -b $aw_version
 	mv autoware $folder_name
 	cd $folder_name && mkdir src && vcs import src < autoware.repos
+	cd $folder_name && vcs import src < autoware-nightly.repos
 
 [no-cd]
 dependency:
@@ -17,6 +18,16 @@ dependency:
 [no-cd]
 build:
 	cd $folder_name && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+[no-cd]
+run:
+	# Download the map if not exist
+	[ ! -d ~/autoware_map ] && \
+		gdown -O ~/autoware_map/ 'https://docs.google.com/uc?export=download&id=1499_nsbUbIeturZaDj7jhUownh5fvXHd' && \
+		unzip -d ~/autoware_map ~/autoware_map/sample-map-planning.zip || \
+		echo "Map exists."
+	# Run the planning_simulator
+	ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/autoware_map/sample-map-planning vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
 
 [no-cd]
 clean:
