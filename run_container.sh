@@ -20,10 +20,21 @@ if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
                  -f ${DOCKER_FILE} -t ${DOCKER_IMAGE} .
 fi
 
+# Check using DISPLAY or not
+MOUNT_X=""
 if [[ -z "${DISPLAY}" ]]; then
     echo "The terminal doesn't support GUI."
 else
     xhost +local:
+    MOUNT_X="-e QT_X11_NO_MITSHM=1 -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix/:/tmp/.X11-unix"
+fi
+
+# Enable GPU or not
+GPU_FLAG=""
+if [[ -z "${ENABLE_GPU}" ]]; then
+    echo "Run without GPU"
+else
+    GPU_FLAG="--gpus all"
 fi
 
 # Check the status of the container (We need to ignore errors here)
@@ -40,10 +51,9 @@ elif [ "$CONTAINER_STATUS" == "running" ]; then
     docker exec -it ${CONTAINER_NAME} zsh
 elif [ "$CONTAINER_STATUS" == "" ]; then
     echo "Container '$CONTAINER_NAME' does not exist. Creating and running the container..."
-    docker run -it --network host --privileged --name ${CONTAINER_NAME} \
+    docker run -it --network host --privileged --name ${CONTAINER_NAME} ${MOUNT_X} ${GPU_FLAG} \
         -v $(pwd):/workspaces/ros2_build_env --workdir /workspaces/ros2_build_env \
-        -e QT_X11_NO_MITSHM=1 -e DISPLAY=${DISPLAY} \
-        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -e XAUTHORITY=${XAUTHORITY} -e XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR -e NVIDIA_DRIVER_CAPABILITIES=all \
         -v /etc/localtime:/etc/localtime:ro \
         ${DOCKER_IMAGE}
 else
