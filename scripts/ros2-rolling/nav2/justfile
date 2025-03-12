@@ -4,7 +4,8 @@ all: download dependency build
 download:
 	mkdir -p ros2_rolling_nav2_ws/src
 	cd ros2_rolling_nav2_ws/src && \
-		git clone https://github.com/ros-navigation/navigation2.git -b main
+		git clone https://github.com/ros-navigation/navigation2.git -b main && \
+		git clone https://github.com/ros2/common_interfaces.git
 
 [no-cd]
 dependency:
