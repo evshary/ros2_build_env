@@ -21,7 +21,11 @@ RUN apt-get update && \
       ros-jazzy-navigation2 \
       ros-jazzy-nav2-bringup \
       ros-jazzy-turtlebot3* \
-      ros-jazzy-rmw-cyclonedds-cpp
+      ros-jazzy-rmw-cyclonedds-cpp \
+      ros-jazzy-demo-nodes-cpp \
+      ros-jazzy-demo-nodes-py \
+      ros-jazzy-action-tutorials-cpp \
+      ros-jazzy-action-tutorials-py
 
 # Enable bash complete
 RUN rm /etc/apt/apt.conf.d/docker-clean

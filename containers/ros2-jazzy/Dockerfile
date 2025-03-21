@@ -32,7 +32,11 @@ RUN apt-get update && \
     apt-get install -y --only-upgrade ros-jazzy-* && \
     apt-get install -y \
       ros-jazzy-rmw-cyclonedds-cpp \
-      ros-jazzy-ament-cmake-vendor-package
+      ros-jazzy-ament-cmake-vendor-package \
+      ros-jazzy-demo-nodes-cpp \
+      ros-jazzy-demo-nodes-py \
+      ros-jazzy-action-tutorials-cpp \
+      ros-jazzy-action-tutorials-py
 
 # Install ROS build system necessary packages
 RUN apt-get update && \

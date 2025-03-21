@@ -21,6 +21,10 @@ RUN apt-get update && \
       ros-rolling-rmw-cyclonedds-cpp \
       ros-rolling-ros-gz-bridge \
       ros-rolling-ros-gz-sim \
+      ros-rolling-demo-nodes-cpp \
+      ros-rolling-demo-nodes-py \
+      ros-rolling-action-tutorials-cpp \
+      ros-rolling-action-tutorials-py \
       libceres-dev
 
 # Enable bash complete

@@ -32,7 +32,11 @@ RUN apt-get update && \
     apt-get install -y --only-upgrade ros-rolling-* && \
     apt-get install -y \
       ros-rolling-rmw-cyclonedds-cpp \
-      ros-rolling-ament-cmake-vendor-package
+      ros-rolling-ament-cmake-vendor-package \
+      ros-rolling-demo-nodes-cpp \
+      ros-rolling-demo-nodes-py \
+      ros-rolling-action-tutorials-cpp \
+      ros-rolling-action-tutorials-py
 
 # Install ROS build system necessary packages
 RUN apt-get update && \
