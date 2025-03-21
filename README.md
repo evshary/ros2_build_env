@@ -17,8 +17,7 @@ The project is to setup ROS 2 development environment for vscode.
 #### Using containers in terminal
 
 ```shell
-source ./containers/<whatever you want>/env.sh
-./run_container.sh
+./containers/<the environment you want>/run_container.sh
 ```
 
 Note that containers won't be deleted after your experiment.

@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-if [ -z "${DOCKER_IMAGE}" ]; then
-    echo "Please source the container env first"
-    echo "For example:"
-    echo "  source containers/ros2-jazzy/env.sh"
-    echo "  source containers/ros2-rolling/env.sh"
-    exit 1
-fi
+script_symlink_dir="$(dirname "$0")"
+source ${script_symlink_dir}/env.sh
 
 CONTAINER_NAME=${DOCKER_IMAGE}-container
 
@@ -21,13 +16,12 @@ if [ ! "$(docker images -q ${DOCKER_IMAGE})" ]; then
 fi
 
 # Check using DISPLAY or not
-MOUNT_X=""
 if [[ -z "${DISPLAY}" ]]; then
-    echo "The terminal doesn't support GUI."
-else
-    xhost +local:
-    MOUNT_X="-e QT_X11_NO_MITSHM=1 -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix/:/tmp/.X11-unix"
+    echo "Unable to detect DISPLAY. Set it to :0"
+    export DISPLAY=:0
 fi
+xhost +local:
+MOUNT_X="-e QT_X11_NO_MITSHM=1 -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix/:/tmp/.X11-unix"
 
 # Enable GPU or not
 GPU_FLAG=""
