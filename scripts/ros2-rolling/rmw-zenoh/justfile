@@ -5,6 +5,8 @@ download:
 	mkdir -p ros2_rolling_rmw_zenoh_ws/src
 	cd ros2_rolling_rmw_zenoh_ws/src && \
 		git clone https://github.com/ros2/rmw_zenoh -b rolling && \
+		git clone https://github.com/ros2/ament_cmake_ros.git && \
+		git clone https://github.com/ros2/rcutils.git && \
 		cd rmw_zenoh && \
 		git remote add zetta git@github.com:ZettaScaleLabs/rmw_zenoh.git
 
