@@ -1,9 +1,4 @@
-if [ $# -eq 0 ]; then
-  echo "You need to provide ROS version, like jazzy, rolling..."
-  return
-fi
-
-export rosdistro=${1}
+export rosdistro=${ROS_DISTRO}
 export shell=zsh
 
 # ccache configuration
