@@ -1,0 +1,22 @@
+all: download dependency build
+
+[no-cd]
+download:
+	mkdir -p ros2_humble_rmw_zenoh_ws/src
+	cd ros2_humble_rmw_zenoh_ws/src && \
+		git clone https://github.com/ros2/rmw_zenoh -b humble && \
+		cd rmw_zenoh && \
+		git remote add zetta git@github.com:ZettaScaleLabs/rmw_zenoh.git
+
+[no-cd]
+dependency:
+	rosdep update
+	cd ros2_humble_rmw_zenoh_ws && rosdep install --from-paths src --ignore-src --rosdistro humble -y
+
+[no-cd]
+build:
+	cd ros2_humble_rmw_zenoh_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+[no-cd]
+clean:
+	rm -rf ros2_humble_rmw_zenoh_ws
