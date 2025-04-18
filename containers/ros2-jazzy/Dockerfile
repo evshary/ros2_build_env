@@ -20,6 +20,7 @@ RUN apt-get update && \
       curl \
       wget \
       git \
+      tig \
       tmux \
       vim \
       just \
