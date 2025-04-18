@@ -1,4 +1,12 @@
-export rosdistro=${ROS_DISTRO}
+if [ $# -ne 0 ]; then
+  export rosdistro=${1}
+elif [ -n ${ROS_DISTRO} ]; then
+  export rosdistro=${ROS_DISTRO}
+else
+  echo "You need to provide ROS version, like humble, jazzy, rolling..."
+  exit 1
+fi
+
 export shell=zsh
 
 # ccache configuration
