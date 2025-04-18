@@ -3,9 +3,11 @@ all: download dependency build
 [no-cd]
 download:
 	mkdir -p ros2_rolling_nav2_ws/src
+	# TODO: behaviortree_cpp is removed due to https://github.com/BehaviorTree/BehaviorTree.CPP/issues/960
 	cd ros2_rolling_nav2_ws/src && \
 		git clone https://github.com/ros-navigation/navigation2.git -b main && \
-		git clone https://github.com/ros2/common_interfaces.git
+		git clone https://github.com/ros2/common_interfaces.git && \
+		git clone https://github.com/BehaviorTree/BehaviorTree.CPP.git
 
 [no-cd]
 dependency:
