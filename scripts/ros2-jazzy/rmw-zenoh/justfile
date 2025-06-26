@@ -15,7 +15,7 @@ dependency:
 
 [no-cd]
 build:
-	cd ros2_jazzy_rmw_zenoh_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	cd ros2_jazzy_rmw_zenoh_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
 
 [no-cd]
 clean:

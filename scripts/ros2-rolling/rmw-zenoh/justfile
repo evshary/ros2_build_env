@@ -5,8 +5,6 @@ download:
 	mkdir -p ros2_rolling_rmw_zenoh_ws/src
 	cd ros2_rolling_rmw_zenoh_ws/src && \
 		git clone https://github.com/ros2/rmw_zenoh -b rolling && \
-		git clone https://github.com/ros2/ament_cmake_ros.git && \
-		git clone https://github.com/ros2/rcutils.git && \
 		cd rmw_zenoh && \
 		git remote add zetta git@github.com:ZettaScaleLabs/rmw_zenoh.git
 
@@ -17,7 +15,7 @@ dependency:
 
 [no-cd]
 build:
-	cd ros2_rolling_rmw_zenoh_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	cd ros2_rolling_rmw_zenoh_ws && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
 
 [no-cd]
 clean:
